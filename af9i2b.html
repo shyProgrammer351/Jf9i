@@ -1,0 +1,45 @@
+<!DOCTYPE html> <html> 	<head> 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 		<script type="text/javascript" src="./../JS2GitHub_reading_C/C0902.js"></script> 		<script type="text/javascript" src="https://shyprogrammer351.github.io/reading/functions.js"></script> 		<link rel="stylesheet" href="layout.css"> <!--		<link rel="stylesheet" href="https://shyprogrammer351.github.io/reading/layout.css"> -->		<script> 			const d10 = [ [ "FILE *" ], [ "fopen","fopen()" ], [ "rt" ], [ "fgets","fgets()" ], [ "fclose","fclose()" ], 							]; 		</script> 	</head> 	<body onload='f1();' onkeydown='f4()' oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" onpaste="return false" draggable="false" ondragstart="return false" ondrop="return false"> 		<div id = "container"> 			<div id = "titleBox"> 			</div> 			<div id = "navigationBox"> 			</div>  			<div id = "contentBox"> 				<h4>문제</h4> 				<pre style='white-space:normal;'>영어 단어를 입력하면 영한 사전을 열고 그 뜻을 찾아서 출력하는 문제입니다 이를 해결하는 다음 프로그램에 대해 빈칸을 채우세요 <pre>
+--------- 파일 dictionary.txt의 내용 --------- 
+apple의 뜻은 사과입니다.
+banana의 뜻은 바나나입니다.
+carrot의 뜻은 당근입니다.
+...
+</pre></pre> 				<pre class='selectable'>영어단어를 입력하세요 : <b><font color='red'>apple</font></b>
+apple의 뜻은 사과입니다.
+</pre><br><pre class='selectable'>영어단어를 입력하세요 : <b><font color='red'>banana</font></b>
+banana의 뜻은 바나나입니다.
+</pre><br><pre class='selectable'>영어단어를 입력하세요 : <b><font color='red'>carrot</font></b>
+carrot의 뜻은 당근입니다.
+</pre><br>  	  				<h4>코드 빈칸 채우기</h4> 				<pre style='white-space:pre;border:1px'>#include &lt;stdio.h&gt; 
+#include &lt;string.h&gt; 
+ 
+#define MAX_STR_LEN 1024	 
+ 
+int main() 
+{ 
+	char word[MAX_STR_LEN] = ""; 
+	char meaning[MAX_STR_LEN] = ""; 
+	<input id='blank0' type='text' required minlength='1' maxlength='30' size='10' onchange='f6(0)'>dictionary = NULL;						 
+ 
+	printf( "영어단어를 입력하세요 : " ); 
+	scanf( "%s", word ); 
+ 
+	if ( ( dictionary = <input id='blank1' type='text' required minlength='1' maxlength='30' size='10' onchange='f6(1)'>( "dictionary.txt", "<input id='blank2' type='text' required minlength='1' maxlength='30' size='10' onchange='f6(2)'>" ) ) == NULL )		 
+	{ 
+		printf( "[오류] 파일을 열 수 없습니다!" ); 
+		return -1; 
+	} 
+ 
+	while ( <input id='blank3' type='text' required minlength='1' maxlength='30' size='10' onchange='f6(3)'>( meaning, MAX_STR_LEN, dictionary ) != NULL ) 		 
+	{ 
+		if ( !strncmp( word,  meaning, strlen( word ) ) ) 
+		{ 
+			printf( "%s", meaning ); 
+			break; 
+		} 
+	} 
+ 
+	<input id='blank4' type='text' required minlength='1' maxlength='30' size='10' onchange='f6(4)'>( dictionary );							 
+ 
+	return 0; 
+} 	 			</pre> 			</div> 		</div> 	</body> </html> 

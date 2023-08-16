@@ -1,0 +1,32 @@
+<!DOCTYPE html> <html> 	<head> 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 		<script type="text/javascript" src="./../JS2GitHub_reading_C/C0901.js"></script> 		<script type="text/javascript" src="https://shyprogrammer351.github.io/reading/functions.js"></script> 		<link rel="stylesheet" href="layout.css"> <!--		<link rel="stylesheet" href="https://shyprogrammer351.github.io/reading/layout.css"> -->		<script> 			var d10 = "1 2 3 5 6 5 6 5 7 8"; 		</script> 	</head> 	<body onload='f1();' onkeydown='f4()' oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" onpaste="return false" draggable="false" ondragstart="return false" ondrop="return false"> 		<div id = "container"> 			<div id = "titleBox"> 			</div> 			<div id = "navigationBox"> 			</div>  			<div id = "contentBox"> 				<h4>문제</h4> 				<pre style='white-space:normal;'>파일 원본을 읽어 파일 복사본을 생성하는 파일 복사 문제입니다 실행순서를 클릭하세요 <pre>
+--------- 파일 원본.txt의 내용 --------- 
+과연 파일 복사는 잘 될까요?
+파일 복사가 잘 되면 좋겠어요^^
+</pre></pre> 				  	 				<h4>프로그램 코드</h4> 				<pre></pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt;
+
+</pre><pre id="code0" class="unselectable codeClass">	#define MAX_STR_LEN 1024	
+
+</pre><pre id="code1" class="unselectable codeClass" onmouseover="f8(this.id, true) " onmouseout="f8(this.id, false)" onclick="f7(1)">1	int main()
+</pre><pre id="code0" class="unselectable codeClass">	{
+</pre><pre id="code0" class="unselectable codeClass">		char line[MAX_STR_LEN] = "";
+
+</pre><pre id="code0" class="unselectable codeClass">		FILE *inFile = fopen( "원본.txt", "rt" );			
+</pre><pre id="code2" class="unselectable codeClass" onmouseover="f8(this.id, true) " onmouseout="f8(this.id, false)" onclick="f7(2)">2		FILE *outFile = fopen( "복사본.txt", "wt" );			
+</pre><pre id="code3" class="unselectable codeClass" onmouseover="f8(this.id, true) " onmouseout="f8(this.id, false)" onclick="f7(3)">3		if ( ( inFile == NULL ) || ( outFile == NULL ) )		
+</pre><pre id="code0" class="unselectable codeClass">		{
+</pre><pre id="code0" class="unselectable codeClass">			printf( "[오류] 파일을 열 수 없습니다!" );
+</pre><pre id="code4" class="unselectable codeClass" onmouseover="f8(this.id, true) " onmouseout="f8(this.id, false)" onclick="f7(4)">4			return -1;
+</pre><pre id="code0" class="unselectable codeClass">		}
+
+</pre><pre id="code5" class="unselectable codeClass" onmouseover="f8(this.id, true) " onmouseout="f8(this.id, false)" onclick="f7(5)">5		while ( fgets( line, MAX_STR_LEN, inFile ) != NULL ) 	
+</pre><pre id="code0" class="unselectable codeClass">		{
+</pre><pre id="code6" class="unselectable codeClass" onmouseover="f8(this.id, true) " onmouseout="f8(this.id, false)" onclick="f7(6)">6			fprintf( outFile, "%s", line ); 			
+</pre><pre id="code0" class="unselectable codeClass">		}
+
+</pre><pre id="code0" class="unselectable codeClass">		fclose( inFile );						
+</pre><pre id="code7" class="unselectable codeClass" onmouseover="f8(this.id, true) " onmouseout="f8(this.id, false)" onclick="f7(7)">7		fclose( outFile );							
+
+</pre><pre id="code8" class="unselectable codeClass" onmouseover="f8(this.id, true) " onmouseout="f8(this.id, false)" onclick="f7(8)">8		return 0;
+</pre><pre id="code0" class="unselectable codeClass">	}
+</pre>
+</pre> 			</div> 			<div id = "floatingBox"> 				<b>실행 순서</b> 				<pre id = "d4" style='white-space:normal; word-wrap:break-word; width:150px;'></pre> 			</div> 		</div> 	</body> </html>   

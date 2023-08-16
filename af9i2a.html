@@ -1,0 +1,13 @@
+<!DOCTYPE html> <html> 	<head> 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script> 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script> 		<script type="text/javascript" src="./../JS2GitHub_reading_C/C0902.js"></script> 		<script type="text/javascript" src="https://shyprogrammer351.github.io/reading/functions.js"></script> 		<link rel="stylesheet" href="layout.css"> <!--		<link rel="stylesheet" href="https://shyprogrammer351.github.io/reading/layout.css"> -->		<script> 			const d10 = [ [ "6", "프로그램 종료" ], [ "5", "-영한 사전 닫기" ], [ "1", "-영어 단어를 입력" ], [ "4", "--해당 영어단어를 찾으면 뜻을 출력" ], [ "3", "-영한 사전에서 한 줄씩 읽고" ], [ "0", "프로그램시작" ], [ "2", "-영한 사전을 열기" ], 							]; 		</script> 	</head> 	<body onload='f3();' onkeydown='f4()' oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" onpaste="return false"> 		<div id = "container"> 			<div id = "titleBox"> 			</div> 			<div id = "navigationBox"> 			</div>  			<div id = "contentBox"> 				<h4>문제</h4> 				<pre style='white-space:normal;'>영어 단어를 입력하면 영한 사전을 열고 그 뜻을 찾아서 출력하는 문제입니다 이를 해결하는 방법을 아래 참고자료에서 한줄씩 복붙해서 설명하세요 <pre>
+--------- 파일 dictionary.txt의 내용 --------- 
+apple의 뜻은 사과입니다.
+banana의 뜻은 바나나입니다.
+carrot의 뜻은 당근입니다.
+...
+</pre></pre> 				<pre class='selectable'>영어단어를 입력하세요 : <b><font color='red'>apple</font></b>
+apple의 뜻은 사과입니다.
+</pre><br><pre class='selectable'>영어단어를 입력하세요 : <b><font color='red'>banana</font></b>
+banana의 뜻은 바나나입니다.
+</pre><br><pre class='selectable'>영어단어를 입력하세요 : <b><font color='red'>carrot</font></b>
+carrot의 뜻은 당근입니다.
+</pre><br>  	 				<h4>알고리즘</h4> 				<div id="card" style='width:2000px;'> 	  				<div id="cardSlots"></div> 	  				<div id="cardPile"></div> 				</div> 			</div> 		</div> 	</body>  </html>  
