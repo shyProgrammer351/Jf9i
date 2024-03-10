@@ -1,0 +1,60 @@
+<!DOCTYPE html> <html> 	<head> 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 		<script type="text/javascript" src="./../../OneDrive_Web_js/J0909.js"></script> 		<script type="text/javascript" src="../reading/functions.js"></script> 		<link rel="stylesheet" href="../reading/layout.css"> 		<script> 			var d10 = ""; 		</script> 	</head> 	<body onload='f1();' onkeydown='f4()' oncontextmenu="return false" oncut="return false" onpaste="return false" draggable="false" ondragstart="return false" ondrop="return false"> 		<div id = "container"> 			<div id = "titleBox"> 			</div> 			<div id = "navigationBox"> 			</div>  			<div id = "contentBox"> 				<h4>문제</h4> 				<pre style='white-space:normal;'>MLP 코드의 일부입니다 실행순서를 클릭하세요 </pre> 				  	 				<h4>프로그램 코드</h4> 				<pre><pre id="code0" class="unselectable codeClass">	import numpy as np
+
+</pre><pre id="code0" class="unselectable codeClass">	# 시그모이드 함수
+</pre><pre id="code0" class="unselectable codeClass">	def actf삭제(x):
+</pre><pre id="code0" class="unselectable codeClass">		return 1/(1+np.exp(-x))
+
+</pre><pre id="code0" class="unselectable codeClass">	# 시그모이드 함수의 미분값
+</pre><pre id="code0" class="unselectable codeClass">	def actf_deriv삭제( x ):
+</pre><pre id="code0" class="unselectable codeClass">		    return x*(1-x)
+</pre><pre id="code0" class="unselectable codeClass">	    
+</pre><pre id="code0" class="unselectable codeClass">	# XOR 연산을 위한 4행*2열의 입력 행렬
+</pre><pre id="code0" class="unselectable codeClass">	# 마지막 열은 바이어스를 나타낸다. 
+</pre><pre id="code0" class="unselectable codeClass">	X = np.array([[0,0,1], [0,1,1], [1,0,1], [1,1,1]])
+</pre><pre id="code0" class="unselectable codeClass">	                
+</pre><pre id="code0" class="unselectable codeClass">	# XOR 연산을 위한 4행*1열의 목표 행렬
+</pre><pre id="code0" class="unselectable codeClass">	y = np.array([[0], [1], [1], [0]])
+
+</pre><pre id="code0" class="unselectable codeClass">	np.random.seed(5)
+
+</pre><pre id="code0" class="unselectable codeClass">	inputs = 3	# 입력층의 노드 개수
+</pre><pre id="code0" class="unselectable codeClass">	hiddens = 6	# 은닉층의 노드 개수
+</pre><pre id="code0" class="unselectable codeClass">	outputs = 1	# 출력층의 노드 개수
+
+</pre><pre id="code0" class="unselectable codeClass">	# 가중치를 ?1.0에서 1.0 사이의 난수로 초기화한다.
+</pre><pre id="code0" class="unselectable codeClass">	weight0삭제 = 2*np.random.random((inputs, hiddens))-1   
+</pre><pre id="code0" class="unselectable codeClass">	weight1삭제 = 2*np.random.random((hiddens, outputs))-1  
+
+</pre><pre id="code0" class="unselectable codeClass">	# 반복한다. 
+</pre><pre id="code0" class="unselectable codeClass">	for i in range(10000):
+
+</pre><pre id="code0" class="unselectable codeClass">	    # 순방향 계산
+</pre><pre id="code0" class="unselectable codeClass">	    layer0삭제 = X				# 입력을 layer0에 대입한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    net1삭제 = np.dot( layer0, weight0 )	# 행렬의 곱을 계산한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    layer1삭제 = actf( net1 )		# 활성화 함수를 적용한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    layer1[:,-1] = 1.0      	#  마지막 열은 바이어스를 나타낸다. 1.0으로 만든다.
+</pre><pre id="code0" class="unselectable codeClass">	    net2삭제 = np.dot( layer1, weight1 )	# 행렬의 곱을 계산한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    layer2삭제 = actf( net2 )		# 활성화 함수를 적용한다. 
+
+</pre><pre id="code0" class="unselectable codeClass">	    # 출력층에서의 오차를 계산한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    layer2_error삭제 = layer2 - y
+</pre><pre id="code0" class="unselectable codeClass">	        
+</pre><pre id="code0" class="unselectable codeClass">	    # 출력층에서의 델타값을 계산한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    layer2_delta삭제 = layer2_error * actf_deriv( layer2 )
+
+</pre><pre id="code0" class="unselectable codeClass">	    # 은닉층에서의 오차를 계산한다.
+</pre><pre id="code0" class="unselectable codeClass">	    # 여기서 T는 행렬의 전치를 의미한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    # 역방향으로 오차를 전파할 때는 반대방향이므로 행렬이 전치되어야 한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    layer1_error삭제 = np.dot( layer2_delta, weight1.T )
+</pre><pre id="code0" class="unselectable codeClass">	    
+</pre><pre id="code0" class="unselectable codeClass">	    # 은닉층에서의 델타를 계산한다.
+</pre><pre id="code0" class="unselectable codeClass">	    layer1_delta삭제 = layer1_error * actf_deriv( layer1 )
+
+</pre><pre id="code0" class="unselectable codeClass">	    # 은닉층->출력층을 연결하는 가중치를 수정한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    weight1 += -0.2*np.dot( layer1.T, layer2_delta )
+
+</pre><pre id="code0" class="unselectable codeClass">	    # 입력층->은닉층을 연결하는 가중치를 수정한다. 
+</pre><pre id="code0" class="unselectable codeClass">	    weight0 += -0.2*np.dot( layer0.T, layer1_delta )
+</pre><pre id="code0" class="unselectable codeClass">	print( layer2 )			# 현재 출력층의 값을 출력한다.
+</pre>
+</pre> 			</div> 			<div id = "floatingBox"> 				<b>실행 순서</b> 				<pre id = "d4" style='white-space:normal; word-wrap:break-word; width:150px;'></pre> 			</div> 		</div> 	</body> </html>   
